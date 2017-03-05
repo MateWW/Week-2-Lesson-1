@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Polyfill</title>	
+	<style>
+		body{
+			width:100%;
+			background:#40affa;
+		}
+		section{
+			width: 60%;
+			margin: 0 auto;
+		}
+		button{
+			color:#ffffff;
+			padding: .5%;
+			width: 25%;
+			font-size:24px;
+			background:#3498db;
+			border:none;
+		}
+		input{
+			margin-left:.5%;
+			font-size:24px;
+			color:white;
+			background:#3498db;
+			border:0;
+			outline: none;
+			padding: .5%;
+		}
+		input:nth-of-type(1){
+			width:66.8%;
+			margin-left: 0;
+		}
+		input:nth-of-type(2){
+			width:5%;
+		}
+		span{
+			display: block;
+			margin-top: 20px;
+			width:98%;
+			color:white;
+			padding: 2%;
+			outline:2px dotted #3498db;
+			font-size:20px;
+		}
+	</style>
+	<script type="text/javascript">
+
+		if(!("repeat" in String.prototype)){
+			String.prototype.repeat=function(amount){
+				var text="";
+				for(i=0;i<amount;i++)
+				{
+						text+=this;
+				}
+				return text;
+			}
+		}
+
+		function clickRd(){
+			var text= document.getElementById("text").value,
+			amount = +document.getElementById("amount").value,
+			output = document.getElementById("output");
+			output.innerHTML = text.repeat(amount);
+		}
+		
+
+	</script>
+</head>
+<body>
+	<section>
+		<input id="text" type="text" value="hej " placeholder="tekst">
+		<input id="amount" type="number" value="2">
+		<button type="button" onclick="(function(){clickRd();})();">Repeat</button>
+		<span id="output"></span>
+	</section>
+</body>
+</html>
